@@ -1,0 +1,95 @@
+using System.Numerics;
+
+int[] playerStats = new int[3]; // Create an integer array to store
+int[] enemyStats = new int[3];
+int turnCount = -1;
+int turnDefense = 3;
+
+
+// Assign player statistics to array elements
+playerStats[0] = 100; // playerHealth
+playerStats[1] = 12;   //playerAttack
+playerStats[2] = 5;   // playerDefense
+enemyStats[0] = 60; // enemyHealth
+enemyStats[1] = 15;   //enemyAttack
+enemyStats[2] = 5;   //enemyDefense
+
+
+// Create an instance of the Random class
+Random random = new Random();
+
+// Game loop
+bool gameOver = false;
+while (!gameOver)
+{
+    Console.WriteLine("\n--- Player Stats ---");
+    Console.WriteLine("Health: " + playerStats[0]);
+    Console.WriteLine("Attack: " + playerStats[1]);
+    Console.WriteLine("Defense: " + playerStats[2]);
+
+    Console.WriteLine("\n--- Enemy Stats ---");
+    Console.WriteLine("Health: " + enemyStats[0]);
+    Console.WriteLine("Attack: " + enemyStats[1]);
+    Console.WriteLine("Defense: " + enemyStats[2]);
+
+    // Player turn
+    Console.WriteLine("\nSelect an action:");
+    Console.WriteLine("1. Attack");
+    Console.WriteLine("2. Defend");
+
+    string input = Console.ReadLine();
+    if (turnCount >= 0)
+    {
+        if(turnCount % turnDefense == 0)
+        {
+            playerStats[2] -= 2;
+        }
+        turnCount--;
+    }
+    if (input == "1")
+    {
+        // Calculate player damage
+        int playerDamage = random.Next(0, playerStats[1] - enemyStats[2]) + 1;
+        enemyStats[0] -= playerDamage;
+
+        Console.WriteLine("Player attacks and deals " + playerDamage +
+" damage!");
+
+    }
+    else if (input == "2")
+    {
+        // Increase player defense
+        playerStats[2] += 2;
+        turnCount += turnDefense;
+        Console.WriteLine("Player defends and increases defense by 2!");
+    }
+    else
+    {
+        Console.WriteLine("Invalid input. Try again.");
+        continue;
+    }
+
+    // Check if enemy is defeated
+    if (enemyStats[0] <= 0)
+    {
+        Console.WriteLine("\nYou defeated the enemy!");
+        gameOver = true;
+        break;
+    }
+
+    // Enemy turn
+    Console.WriteLine("\nEnemy attacks!");
+    int enemyDamage = random.Next(0, enemyStats[1] - playerStats[2]) +1;
+    playerStats[0] -= enemyDamage;
+    Console.WriteLine("Player takes " + enemyDamage + " damage!");
+
+    // Check if player is defeated
+    if (playerStats[0] <= 0)
+    {
+        Console.WriteLine("\nYou were defeated by the enemy!");
+        gameOver = true;
+    }
+}
+
+Console.WriteLine("\n------Game Over------");
+Console.ReadLine();
