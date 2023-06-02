@@ -6,7 +6,7 @@ int turnCount = -1;
 int turnDefense = 3;
 
 
-// Assign player statistics to array elements
+// Statystki:
 playerStats[0] = 100; // playerHealth
 playerStats[1] = 12;   //playerAttack
 playerStats[2] = 5;   // playerDefense
@@ -15,10 +15,9 @@ enemyStats[1] = 15;   //enemyAttack
 enemyStats[2] = 5;   //enemyDefense
 
 
-// Create an instance of the Random class
 Random random = new Random();
 
-// Game loop
+// pętla gry:
 bool gameOver = false;
 while (!gameOver)
 {
@@ -32,7 +31,7 @@ while (!gameOver)
     Console.WriteLine("Attack: " + enemyStats[1]);
     Console.WriteLine("Defense: " + enemyStats[2]);
 
-    // Player turn
+    // player turn
     Console.WriteLine("\nSelect an action:");
     Console.WriteLine("1. Attack");
     Console.WriteLine("2. Defend");
