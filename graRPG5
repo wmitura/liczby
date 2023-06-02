@@ -1,6 +1,6 @@
 using System.Numerics;
 
-int[] playerStats = new int[3]; // Create an integer array to store
+int[] playerStats = new int[3]; 
 int[] enemyStats = new int[3];
 int turnCount = -1;
 int turnDefense = 3;
