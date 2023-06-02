@@ -8,10 +8,10 @@ int turnDefense = 3;
 
 // Statystki:
 playerStats[0] = 100; // playerHealth
-playerStats[1] = 12;   //playerAttack
+playerStats[1] = 15;   //playerAttack
 playerStats[2] = 5;   // playerDefense
 enemyStats[0] = 60; // enemyHealth
-enemyStats[1] = 15;   //enemyAttack
+enemyStats[1] = 10;   //enemyAttack
 enemyStats[2] = 5;   //enemyDefense
 
 
